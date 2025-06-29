@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Адаптивный HTML Документ</title>
+  <link href="https://fonts.cdnfonts.com/css/rounds-black" rel="stylesheet">
+  <style>
+    @keyframes background-pan {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes text-shimmer {
+        0% { background-position: 200% center; }
+        100% { background-position: -200% center; }
+    }
+
+    @keyframes fade-in-up {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    body {
+      background-color: #0F0F0F;
+      background-image: linear-gradient(125deg, #0F0F0F, #1a1a2e, #0F0F0F, #2a1a2e, #0F0F0F);
+      background-size: 400% 400%;
+      margin: 0;
+      font-family: 'Rounds Black', sans-serif;
+      animation: background-pan 30s linear infinite;
+      overflow-x: hidden;
+    }
+
+    .image-block > img {
+      max-width: 80%;
+      height: auto;
+      display: block;
+      margin: auto;
+    }
+
+    h1 {
+      border-radius: 5px;
+      display: inline-block;
+      margin: 5px 0 0;
+      padding: 0 10px;
+      font-size: 40px;
+      background: linear-gradient(110deg, #9A4DE0, #c380f2, #9A4DE0);
+      background-size: 200% 100%;
+      animation: text-shimmer 4s linear infinite;
+      line-height: 1.2;
+    }
+
+    a {
+      border-radius: 5px;
+      display: inline-block;
+      margin: 10px;
+      padding: 3px 15px;
+      font-size: 1.4em;
+      background-color: #55C428;
+      text-decoration: none;
+      color: black;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+
+    a:hover {
+        transform: translateY(-5px) scale(1.1);
+        box-shadow: 0 10px 20px rgba(85, 196, 40, 0.4);
+    }
+
+    p {
+      border-radius: 10px;
+      display: inline-block;
+      margin: 5px 0 0;
+      padding: 0 10px;
+      font-size: 40px;
+      background: linear-gradient(110deg, #55C428, #82e05b, #55C428);
+      background-size: 200% 100%;
+      animation: text-shimmer 4s linear infinite;
+      line-height: 1.2;
+    }
+
+    h4 {
+      border-radius: 5px;
+      display: inline-block;
+      margin: 18px 0px 0;
+      padding: 3px 15px;
+      border:3px solid #4D9B42;
+      color:#4D9B42;
+      font-size: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    h4:hover {
+        background-color: #4D9B42;
+        color: #0F0F0F;
+        transform: scale(1.05);
+        box-shadow: 0 0 25px #4D9B42;
+    }
+
+    h4[style*="6F43AB"]:hover {
+        background-color: #6F43AB;
+        color: #fff;
+        box-shadow: 0 0 25px #6F43AB;
+    }
+
+    h5 {
+      font-size: 50px;
+      color: white;
+      text-align: center;
+      margin: 40px 0;
+      text-shadow: 0 0 10px rgba(255,255,255,0.3), 0 0 20px rgba(255,255,255,0.3);
+      animation: fade-in-up 1s ease-out forwards;
+      opacity: 0;
+      animation-delay: 0.8s;
+    }
+
+    hr {
+      border: none;
+      height: 1px;
+      background-color: green;
+    }
+
+    .flex-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2% 5%;
+      gap: 5%;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fade-in-up 1s ease-out forwards;
+    }
+
+    .flex-container:nth-of-type(1) {
+        animation-delay: 0.2s;
+    }
+    .flex-container:nth-of-type(2) {
+        animation-delay: 0.4s;
+    }
+
+    .header {
+      justify-content: space-between;
+      display: flex;
+      align-items: center;
+      gap: 5%;
+      flex-wrap: wrap;
+      animation: fade-in-up 0.8s ease-out forwards;
+    }
+
+    .header img {
+        transition: transform 0.5s ease;
+    }
+
+    .header img:hover {
+        transform: rotate(10deg) scale(1.1);
+    }
+
+    .header-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-right: 2em;
+      margin-left: 2em;
+    }
+
+    .text-block {
+      flex-basis: 40%;
+      min-width: 300px;
+    }
+
+    .image-block {
+      flex-basis: 45%;
+      min-width: 300px;
+      transform-style: preserve-3d;
+      will-change: transform;
+      transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .news-container {
+      display: flex;
+      justify-content: center;
+      gap: 2%;
+      padding: 0 2%;
+      flex-wrap: wrap;
+    }
+
+    .news-item {
+      flex-basis: 30%;
+      min-width: 280px;
+      margin-bottom: 20px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .news-item:hover {
+        transform: translateY(-15px) scale(1.03);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+    }
+
+    .news-item img {
+      border-radius: 20px;
+      width: 100%;
+      transition: transform 0.4s ease;
+    }
+
+
+
+    @media (max-width: 992px) {
+      .flex-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .header {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .content-block-2 {
+        flex-direction: column-reverse;
+      }
+
+      h1, p {
+        font-size: 36px;
+      }
+
+      h5 {
+        font-size: 40px;
+      }
+
+      h2 {
+        font-size: 18px;
+      }
+
+      h4 {
+        font-size: 24px;
+      }
+    }
+
+    img[src="https://i.imgur.com/F1k4xsO.png"] {
+      filter: drop-shadow(0 0 100px #55C428);
+    }
+
+    img[src="https://i.imgur.com/LCzDFTK.png"] {
+      filter: drop-shadow(0 0 100px #9A4DE0);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <img src="https://i.imgur.com/jeFKlRZ.png" alt="Логотип" style="height: 70px;padding: 1em;">
+    <div class="header-nav">
+      <a href="">Купить</a>
+      <a href="https://vk.com/@yourapogame">ВСЕ ПРАВИЛА</a>
+      <a href="https://vk.com/yourapogame">Блог</a>
+    </div>
+  </div>
+
+
+  <div class="flex-container content-block-1">
+    <div class="image-block">
+      <img src="https://i.imgur.com/F1k4xsO.png" alt="Игра про Красноярск">
+    </div>
+    <div class="text-block">
+      <p>Карточная игра</p>
+      <br>
+      <p>В которой вы узнаете</p>
+      <br>
+      <p>Красноярск</p>
+      <br>
+      <h4>Купить</h4>
+    </div>
+  </div>
+
+  <div class="flex-container content-block-2">
+    <div class="text-block">
+      <h1>Карточная игра</h1>
+      <br>
+      <h1>В которой вы познаёте</h1>
+      <br>
+      <h1>Физику</h1>
+      <br>
+      <h4 style="color:#6F43AB; border:3px solid #6F43AB">Купить</h4>
+    </div>
+    <div class="image-block">
+      <img src="https://i.imgur.com/LCzDFTK.png" alt="Игра про Физику">
+    </div>
+  </div>
+
+  <div>
+    <h5>Последние новости</h5>
+    <div class="news-container">
+      <div class="news-item">
+        <img src="https://i.imgur.com/4UQWRUA.png" alt="Новость 1">
+      </div>
+      <div class="news-item">
+        <img src="https://i.imgur.com/4UQWRUA.png" alt="Новость 2">
+      </div>
+      <div class="news-item">
+        <img src="https://i.imgur.com/4UQWRUA.png" alt="Новость 3">
+      </div>
+    </div>
+  </div>
+
+<script>
+    const imageBlocks = document.querySelectorAll('.image-block');
+    const maxRotation = 8;
+
+    imageBlocks.forEach(block => {
+        block.addEventListener('mousemove', (e) => {
+            const rect = block.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const { width, height } = rect;
+
+            const rotateX = maxRotation * ((y / height) - 0.5) * -1;
+            const rotateY = maxRotation * ((x / width) - 0.5);
+
+            block.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+        });
+
+        block.addEventListener('mouseleave', () => {
+            block.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+        });
+    });
+</script>
+
+</body>
+</html>
